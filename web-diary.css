@@ -1,0 +1,365 @@
+:root {
+    --bg-color: linear-gradient(#080059, #920783, #EB6100);
+}
+
+* {
+    color: #333333;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+}
+
+/* ツールバー (ul) */
+.toolbar {
+    width: 50px;
+    height: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+    list-style: none;
+    display: block;
+    background: var(--bg-color);
+    flex-shrink: 0;
+}
+
+/* ツールバー (li) */
+.tool {
+    width: 100%;
+    height: auto;
+    margin: 25px 0;
+    padding: 0;
+}
+
+/* ツールボタン */
+.tool-button {
+    display: block;
+    appearance: none;
+    background: none;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    width: 30px;
+    height: 30px;
+    margin: 0 auto;
+    padding: 0;
+    user-select: none;
+}
+
+/* 新規作成ボタン */
+#create-button {
+    background-image: url('./images/pen.svg');
+    background-size: contain;
+}
+
+/* 保存ボタン */
+#save-button {
+    background-image: url('./images/floppy-disk.svg');
+    background-size: contain;
+}
+
+/* ファイル読み込みボタン */
+#file-button {
+    background-image: url('./images/clip.svg');
+    background-size: contain;
+}
+
+/* 非表示 */
+#add-file-input {
+    display: none;
+}
+
+/* 削除ボタン */
+#delete-button {
+    background-image: url('./images/garbage-can.svg');
+    background-size: contain;
+}
+
+/* 検索ボタン */
+#search-button {
+    background-image: url('./images/search.svg');
+    background-size: contain;
+}
+
+/* 検索結果を閉じるボタン */
+#close-button {
+    background-image: url('./images/close.svg');
+    background-size: contain;
+}
+
+/* 説明ボタン */
+#help-button {
+    background-image: url('./images/question-mark.svg');
+    background-size: contain;
+}
+
+/* タイトル、本文、作成日表示エリア*/
+.main-contents {
+    width: calc(100% - 550px);
+    height: 100%;
+    box-sizing: border-box;
+    border-right: solid 1px #dddddd;
+}
+
+/* タイトル */
+#title-input {
+    width: 100%;
+    height: 50px;
+    margin: 0px;
+    padding: 0 10px;
+    font-size: 25px;
+    font-weight: bold;
+    outline: none;
+    border-top: none;
+    border-bottom: solid 1px #dddddd;
+    border-left: none;
+    border-right: none;
+    box-sizing: border-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* 本文 */
+#content-area {
+    width: 100%;
+    height: calc(100% - 75px);
+    margin: 0;
+    padding: 10px;
+    font-size: 15px;
+    /* font-weight: bold; */
+    outline: none;
+    overflow-y: scroll;
+    box-sizing: border-box;
+    border-bottom: solid 1px #dddddd;
+    word-wrap: break-word;
+}
+
+#content-area::-webkit-scrollbar {
+    display: none;
+}
+
+#content-area * {
+    max-width: 100%;
+}
+
+/* 画像/動画 */
+#content-area img, video {
+    width: auto;
+    height: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 0;
+    display: block;
+    cursor: default;
+}
+
+/* 保存日時 */
+#created-date {
+    width: 100%;
+    height: 25px;
+    margin: 0;
+    padding: 0 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    user-select: none;
+}
+
+/* 保存記事リスト */
+#save-list {
+    width: 500px;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-y: scroll;
+    border-top: none;
+    border-bottom: none;
+    border-right: none;
+    border-left: none;
+    list-style: none;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+#save-list::-webkit-scrollbar {
+    display: none;
+}
+
+/* 保存記事 */
+.saved-item {
+    clear: both;
+    width: 100%;
+    height: 100px;
+    background-color: #ffffff;
+    border-bottom: solid 1px #dddddd;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    user-select: none;
+}
+
+.container {
+    width: 100%;
+    height: 80%;
+    margin: 0;
+    padding: 0 10px;
+    overflow: hidden;
+}
+
+.thumbnail {
+    width: 80px;
+    height: 80px;
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 10px;
+    border-radius: 20%;
+    object-fit: cover;
+    float: left;
+    background-color: #ffffff;
+}
+
+.list-title {
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.list-text {
+    margin: 0;
+    font-size: 17px;
+    overflow: hidden;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
+}
+
+/* 検索ダイアログ */
+#search-dialog {
+    width: 500px;
+    height: auto;
+    padding: 0;
+    box-sizing: border-box;
+    background: var(--bg-color);
+    border: solid 3px #ffffff;
+    border-radius: 25px;
+    position: relative;
+}
+
+.layout-box {
+    width: 400px;
+    height: auto;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.layout-box > h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    margin-left: 0;
+    margin-right: 0;
+    color: #ffffff;
+    user-select: none;
+}
+
+#search-input {
+    width: 100%;
+    height: 30px;
+    outline: none;
+    padding: 5px 15px;
+    font-size: 20px;
+    font-weight: bold;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 15px;
+    background-color: #ffffff;
+}
+
+#search-input::placeholder {
+    color: #333333;
+    opacity: 0.5;
+}
+
+/* 説明ダイアログ */
+#help-dialog {
+    width: 500px;
+    height: 500px;
+    padding: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+    border: solid 3px #ffffff;
+    border-radius: 25px;
+    position: relative;
+    user-select: none;
+}
+
+.explanation {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    overflow-y: scroll;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    background: var(--bg-color);
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.explanation::-webkit-scrollbar {
+    display: none;
+}
+
+.explanation * {
+    color: #ffffff;
+}
+
+.explanation > table {
+    width: 350px;
+}
+
+.explanation > table, th, td {
+    border: solid 3px #ffffff;
+    border-collapse: collapse;
+    padding: 5px;
+    margin: 0;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 5px;
+    padding: 0;
+    vertical-align: middle;
+}
+
+/* ダイアログを閉じるボタン */
+.dialog-close-button {
+    width: 30px;
+    height: 30px;
+    appearance: none;
+    background: none;
+    background-size: contain;
+    background-image: url('./images/close.svg');
+    outline: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}

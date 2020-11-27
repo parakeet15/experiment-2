@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="web-diary.css">
+    <title>Web diary</title>
+</head>
+
+<body>
+    <!-- ツールバー -->
+    <ul class="toolbar">
+        <li class="tool"><button accesskey="c" id="create-button" class="tool-button"></button></li>
+        <li class="tool"><button accesskey="s" id="save-button" class="tool-button"></button></li>
+        <li class="tool"><button accesskey="x" id="delete-button" class="tool-button"></button></li>
+        <li class="tool"><label accesskey="o" id="file-button" class="tool-button" for="add-file-input"></label></li>
+        <li class="tool"><button accesskey="f" id="search-button" class="tool-button"></button></li>
+        <li class="tool"><button accesskey="w" id="close-button" class="tool-button"></button></li>
+        <li class="tool"><button accesskey="?" id="help-button" class="tool-button"></button></li>
+    </ul>
+    <input id="add-file-input" type="file" accept="image/*, video/mp4">
+
+    <!-- メインコンテンツ -->
+    <div class="main-contents">
+        <input type="text" id="title-input" maxlength="50" placeholder="タイトル">
+        <div id="content-area" contenteditable="true"></div>
+        <div id="created-date"></div>
+    </div>
+
+    <!-- 保存リスト -->
+    <ul id="save-list"></ul>
+
+    <!-- ダイアログ -->
+    <dialog id="search-dialog">
+        <button id="search-dialog-close-button" class="dialog-close-button"></button>
+        <div class="layout-box">
+            <h2>Search</h2>
+            <input type="text" id="search-input" placeholder="入力して Enter を押してください" autofocus>
+        </div>
+    </dialog>
+
+    <dialog id="help-dialog">
+        <button id="help-dialog-close-button" class="dialog-close-button"></button>
+        <div class="explanation">
+            <h2>作成</h2>
+            <p><img src="./images/pen.svg" alt="ペンアイコン" class="icon">をクリックして新しい記事を作成します。<br>タイトルが入力されていない場合は Untitled で保存されます。</p>
+            <table>
+                <tr>
+                    <th colspan="2">ショートカットキー</th>
+                </tr>
+                <tr>
+                    <td>Windows (Chrome)</td>
+                    <td>Alt + Shift + C</td>
+                </tr>
+                <tr>
+                    <td>Mac (Chrome)</td>
+                    <td>Control + Alt + C</td>
+                </tr>
+            </table>
+            <h2>保存</h2>
+            <p><img src="./images/floppy-disk.svg" alt="フロッピーディスクアイコン" class="icon">をクリックして記事を保存します。<br>ローカルストレージの空き容量が足りなくなると保存できません。</p>
+            <table>
+                <tr>
+                    <th colspan="2">ショートカットキー</th>
+                </tr>
+                <tr>
+                    <td>Windows (Chrome)</td>
+                    <td>Alt + Shift + S</td>
+                </tr>
+                <tr>
+                    <td>Mac (Chrome)</td>
+                    <td>Control + Alt + S</td>
+                </tr>
+            </table>
+            <h2>ファイルを添付</h2>
+            <p><img src="./images/clip.svg" alt="クリップアイコン" class="icon">をクリックして画像や動画を添付できます。<br>1MB以下のファイルが使用できます。</p>
+            <table>
+                <tr>
+                    <th colspan="2">ショートカットキー</th>
+                </tr>
+                <tr>
+                    <td>Windows (Chrome)</td>
+                    <td>Alt + Shift + O</td>
+                </tr>
+                <tr>
+                    <td>Mac (Chrome)</td>
+                    <td>Control + Alt + O</td>
+                </tr>
+            </table>
+            <h2>削除</h2>
+            <p><img src="./images/garbage-can.svg" alt="ごみ箱アイコン" class="icon">をクリックして選択中の記事を削除します。</p>
+            <table>
+                <tr>
+                    <th colspan="2">ショートカットキー</th>
+                </tr>
+                <tr>
+                    <td>Windows (Chrome)</td>
+                    <td>Alt + Shift + X</td>
+                </tr>
+                <tr>
+                    <td>Mac (Chrome)</td>
+                    <td>Control + Alt + X</td>
+                </tr>
+            </table>
+            <h2>検索</h2>
+            <p><img src="./images/search.svg" alt="虫眼鏡アイコン" class="icon">をクリックして記事を検索します。<br>一致した項目がリストに表示されます。</p>
+            <table>
+                <tr>
+                    <th colspan="2">ショートカットキー</th>
+                </tr>
+                <tr>
+                    <td>Windows (Chrome)</td>
+                    <td>Alt + Shift + F</td>
+                </tr>
+                <tr>
+                    <td>Mac (Chrome)</td>
+                    <td>Control + Alt + F</td>
+                </tr>
+            </table>
+            <h2>検索結果を閉じる</h2>
+            <p><img src="./images/close.svg" alt="×アイコン" class="icon">をクリックしてリストの表示をリセットします。</p>
+            <table>
+                <tr>
+                    <th colspan="2">ショートカットキー</th>
+                </tr>
+                <tr>
+                    <td>Windows (Chrome)</td>
+                    <td>Alt + Shift + W</td>
+                </tr>
+                <tr>
+                    <td>Mac (Chrome)</td>
+                    <td>Control + Alt + W</td>
+                </tr>
+            </table>
+            <h2>ヘルプ</h2>
+            <p><img src="./images/question-mark.svg" alt="?アイコン" class="icon">をクリックしてこのダイアログを表示します。</p>
+            <table>
+                <tr>
+                    <th colspan="2">ショートカットキー</th>
+                </tr>
+                <tr>
+                    <td>Windows (Chrome)</td>
+                    <td>Alt + Shift + ?</td>
+                </tr>
+                <tr>
+                    <td>Mac (Chrome)</td>
+                    <td>Control + Alt + ?</td>
+                </tr>
+            </table>
+        </div>
+    </dialog>
+
+    <script src="web-diary.js"></script>
+</body>
+
+</html>
